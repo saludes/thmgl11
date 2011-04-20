@@ -6,4 +6,5 @@
 *.pag
 *.bbl
 *.blg
+*.synctex.*
 mgl.pdf

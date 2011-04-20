@@ -1,6 +1,7 @@
 \documentclass[adraft,copyright,creativecommons]{eptcs}
 \providecommand{\event}{THedu'11}
 %\usepackage{breakurl}             % Not needed if you use pdflatex only.
+\usepackage{listings}
 
 \title{The GF Mathematics library}
 \author{Jordi Saludes
@@ -15,6 +16,7 @@ Sebastian Xamb\'o
 \def\titlerunning{GF math Library}
 \def\authorrunning{J. Saludes \& S. Xamb\'o}
 \begin{document}
+\lstset{language=GF}
 \maketitle
 
 \begin{abstract}
@@ -38,6 +40,25 @@ This is the final sentence in the abstract.
 \subsection{Examples} % (fold)
 \label{sub:examples}
 ?? Jo posare els exemples ??
+
+\begin{lstlisting}
+DoSelectFromN
+	(Var2Num y)
+	(domain (fns1_inverse tanh))
+	(mkProp 
+		(gt_num 
+			(At cosh (Var2Num y))
+			nums1_pi))	
+\end{lstlisting}
+gives
+\begin{quote}
+Select y from the domain of the inverse of the hyperbolic tangent such that
+the hyperbolic cosine of y is greater than pi.
+\end{quote}
+
+
+
+
 % subsection examples (end)
 
 % section the_library (end)
