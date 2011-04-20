@@ -4,4 +4,6 @@
 *.out
 *.cls
 *.pag
+*.bbl
+*.blg
 mgl.pdf
