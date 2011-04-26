@@ -41,6 +41,24 @@ This is the final sentence in the abstract.
 \label{sub:examples}
 ?? Jo posare els exemples ??
 
+
+An example from the \emph{OpenMath} layer:
+
+
+\begin{lstlisting}
+mkProp (
+	lt_num (
+		abs (plus (
+				BaseValNum (Var2Num x) (Var2Num y))))
+		(plus (
+			BaseValNum (abs (Var2Num x)) (abs (Var2Num y)))))
+\end{lstlisting}
+gives in Spanish:
+\begin{quote}
+El valor absoluto de la suma  de x y de y es menor que la suma del valor absoluto  de x y del valor absoluto de y
+\end{quote}
+
+
 \begin{lstlisting}
 DoSelectFromN
 	(Var2Num y)
@@ -50,7 +68,7 @@ DoSelectFromN
 			(At cosh (Var2Num y))
 			nums1_pi))	
 \end{lstlisting}
-gives
+gives in English:
 \begin{quote}
 Select y from the domain of the inverse of the hyperbolic tangent such that
 the hyperbolic cosine of y is greater than pi.
