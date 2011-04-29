@@ -20,10 +20,7 @@ Sebastian Xamb\'o
 \maketitle
 
 \begin{abstract}
-This is a sentence in the abstract.
-This is another sentence in the abstract.
-This is yet another sentence in the abstract.
-This is the final sentence in the abstract.
+The \emph{Mathematics Grammar Library} (mgl for short)
 \end{abstract}
 
 \section{Introduction} % (fold)
@@ -32,15 +29,52 @@ This is the final sentence in the abstract.
 
 ?? Descriure la historia: Projecte webALT ??
 
+\subsection{Goals} % (fold)
+?? Afegir ??
+\label{sub:goals}
+
+% subsection goals (end)
+
 % section introduction (end)
 
 \section{The library} % (fold)
 \label{sec:the_library}
 
+\subsection{Categories} % (fold)
+\label{sub:categories}
+
+GF types are called \emph{categories}, they are used to declare signatures for the functions that generate the grammar.
+Ours are all possible combinations of \textbf{Variable} and \textbf{Value} with the mathematical categories: \textbf{Number}, \textbf{Set}, \textbf{Tensor} and \textbf{Function}.
+Thus the category \texttt{VarNum} denotes a numeric variable like $x$, whilst \texttt{ValSet} denotes an actual set like ``the domain of the natural logarithm''.
+The distinction between variables and values allows us to typecheck productions like a lambda abstraction that requires a variable as the first argument.
+Obviously variables can be promoted to values when needed.
+
+Other categories stand for \emph{propositions}, geometric constructions and indices.
+% subsection categories (end)
+
+\subsection{Structure} % (fold)
+\label{sub:structure}
+
+The library is organized matrix-like with an horizontal axis ranging over the targeted natural languages.
+At the moment these are: Bulgarian, Catalan, English, Finnish, French, German, Italian, Romanian, Spanish and Swedish.
+
+The vertical axis is for complexity and contains from bottom to top, three layers:
+
+\begin{enumerate}
+	\item The \emph{Ground} layer;
+	\item The \emph{OpenMath} layer;
+	\item The \emph{Operations} layer.
+\end{enumerate}
+
+The ground layer is very shallow and stands for literals, indices and variables.
+The intermediate layer is called \emph{OpenMath} because is modeled after \emph{OpenMath Content Dictionaries} which are sets of mathematical objects collected by the \emph{OpenMath consortium}. 
+
+Each \emph{Content Dictionary} corresponds to a module in this layer.
+
+% subsection structure (end)
+
 \subsection{Examples} % (fold)
 \label{sub:examples}
-?? Jo posare els exemples ??
-
 
 An example from the \emph{OpenMath} layer:
 
@@ -84,7 +118,7 @@ the hyperbolic cosine of y is greater than pi.
 
 
 
-\section{Bibliography}
+\section{Bibliography} % (fold)
 
 Often an official publication is only available against payment, but
 as a courtesy to readers that do not wish to pay, the authors also
@@ -104,4 +138,5 @@ them there in the first place.
 \nocite{*}
 \bibliographystyle{eptcsstyle/eptcs}
 \bibliography{webalt}
+% section Bibliography (end)
 \end{document}
