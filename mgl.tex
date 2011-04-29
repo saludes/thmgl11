@@ -1,9 +1,11 @@
 \documentclass[adraft,copyright,creativecommons]{eptcs}
 \providecommand{\event}{THedu'11}
-%\usepackage{breakurl}             % Not needed if you use pdflatex only.
+%\usepackage{breakurl} % Not needed if you use pdflatex only.
 \usepackage{listings}
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.95}
 
-\title{The GF Mathematics library}
+\title{The GF Mathematics Library}
 \author{Jordi Saludes
 \institute{UPC}
 \institute{Sistemes Avan\c cats de Control}\\
@@ -13,10 +15,12 @@ Sebastian Xamb\'o
 \institute{Universitat Polit\`ecnica de Catalunya.\\Barcelona, Spain}
 \email{\quad ??}
 }
-\def\titlerunning{GF math Library}
+\def\titlerunning{GF Math Library}
 \def\authorrunning{J. Saludes \& S. Xamb\'o}
 \begin{document}
-\lstset{language=GF}
+\lstset{backgroundcolor=\color{light-gray},
+		breaklines=true,
+		tabsize=2} % language=GF
 \maketitle
 
 \begin{abstract}
@@ -26,12 +30,17 @@ The \emph{Mathematics Grammar Library} (mgl for short)
 \section{Introduction} % (fold)
 \label{sec:introduction}
 
+Using the \emph{Grammatical Framework\cite{GF}}.
 
 ?? Descriure la historia: Projecte webALT ??
 
 \subsection{Goals} % (fold)
-?? Afegir ??
 \label{sub:goals}
+The objective of the library is to allow natural language services for mathematical constructs at the level of high school and
+college freshmen linear algebra and calculus, that eventually could grow up to cover more sophisticated productions.
+
+At the present stage, the visible goal is to provide rendering of simple mathematical exercises in multiple languages.
+A demo is available (see \cite{MathBar})
 
 % subsection goals (end)
 
@@ -39,6 +48,7 @@ The \emph{Mathematics Grammar Library} (mgl for short)
 
 \section{The library} % (fold)
 \label{sec:the_library}
+The library is a collection of GF modules
 
 \subsection{Categories} % (fold)
 \label{sub:categories}
@@ -46,16 +56,16 @@ The \emph{Mathematics Grammar Library} (mgl for short)
 GF types are called \emph{categories}, they are used to declare signatures for the functions that generate the grammar.
 Ours are all possible combinations of \textbf{Variable} and \textbf{Value} with the mathematical categories: \textbf{Number}, \textbf{Set}, \textbf{Tensor} and \textbf{Function}.
 Thus the category \texttt{VarNum} denotes a numeric variable like $x$, whilst \texttt{ValSet} denotes an actual set like ``the domain of the natural logarithm''.
-The distinction between variables and values allows us to typecheck productions like a lambda abstraction that requires a variable as the first argument.
+The distinction between variables and values allows us to type-check productions like lambda abstractions that require a variable as the first argument.
 Obviously variables can be promoted to values when needed.
 
-Other categories stand for \emph{propositions}, geometric constructions and indices.
+Other categories stand for propositions, geometric constructions and indices.
 % subsection categories (end)
 
 \subsection{Structure} % (fold)
 \label{sub:structure}
 
-The library is organized matrix-like with an horizontal axis ranging over the targeted natural languages.
+The library is organised matrix-like with an horizontal axis ranging over the targeted natural languages.
 At the moment these are: Bulgarian, Catalan, English, Finnish, French, German, Italian, Romanian, Spanish and Swedish.
 
 The vertical axis is for complexity and contains from bottom to top, three layers:
@@ -67,9 +77,11 @@ The vertical axis is for complexity and contains from bottom to top, three layer
 \end{enumerate}
 
 The ground layer is very shallow and stands for literals, indices and variables.
-The intermediate layer is called \emph{OpenMath} because is modeled after \emph{OpenMath Content Dictionaries} which are sets of mathematical objects collected by the \emph{OpenMath consortium}. 
+The intermediate layer is called \emph{OpenMath} because is modelled after \emph{OpenMath Content Dictionaries} which are sets of mathematical objects collected by the \emph{OpenMath consortium\cite{OpenMath}}.
 
 Each \emph{Content Dictionary} corresponds to a module in this layer.
+
+The top layer (\emph{Operations}) deals with simple mathematical exercises like compute, find, prove, give an example \ldots.
 
 % subsection structure (end)
 
@@ -80,12 +92,10 @@ An example from the \emph{OpenMath} layer:
 
 
 \begin{lstlisting}
-mkProp (
-	lt_num (
-		abs (plus (
-				BaseValNum (Var2Num x) (Var2Num y))))
-		(plus (
-			BaseValNum (abs (Var2Num x)) (abs (Var2Num y)))))
+mkProp
+	(lt_num
+		(abs (plus (BaseValNum (Var2Num x) (Var2Num y))))
+		(plus (BaseValNum (abs (Var2Num x)) (abs (Var2Num y)))))
 \end{lstlisting}
 gives in Spanish:
 \begin{quote}
@@ -96,11 +106,11 @@ El valor absoluto de la suma  de x y de y es menor que la suma del valor absolut
 \begin{lstlisting}
 DoSelectFromN
 	(Var2Num y)
-	(domain (fns1_inverse tanh))
+	(domain (inverse tanh))
 	(mkProp 
 		(gt_num 
 			(At cosh (Var2Num y))
-			nums1_pi))	
+			pi))	
 \end{lstlisting}
 gives in English:
 \begin{quote}
@@ -114,25 +124,6 @@ the hyperbolic cosine of y is greater than pi.
 % subsection examples (end)
 
 % section the_library (end)
-
-
-
-
-\section{Bibliography} % (fold)
-
-Often an official publication is only available against payment, but
-as a courtesy to readers that do not wish to pay, the authors also
-make the paper available free of charge at a repository such as
-\url{arXiv.org}. In such a case it is recommended to also refer and
-link to the URL of the response page of the paper in such a
-repository.  This can be done using the bibtex fields {\tt ee} or {\tt
-url}, which are treated as synonyms.  These fields should not be used
-to duplicate information that is already provided through the DOI of
-the paper.
-You can find archival-quality URL's for most recently published papers
-in DBLP---they are in the bibtex-field {\tt ee}. In fact, it is often
-useful to check your references against DBLP records anyway, or just find
-them there in the first place.
 
 
 \nocite{*}
