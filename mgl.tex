@@ -3,7 +3,7 @@
 %\usepackage{breakurl} % Not needed if you use pdflatex only.
 \usepackage{listings}
 \usepackage{color}
-\definecolor{light-gray}{gray}{0.95}
+\definecolor{light-gray}{gray}{0.8}
 
 \title{The GF Mathematics Library}
 \author{Jordi Saludes
@@ -34,24 +34,23 @@ Using the \emph{Grammatical Framework\cite{GF}}.
 
 ?? Descriure la historia: Projecte webALT ??
 
-\subsection{Goals} % (fold)
-\label{sub:goals}
 The objective of the library is to allow natural language services for mathematical constructs at the level of high school and
 college freshmen linear algebra and calculus, that eventually could grow up to cover more sophisticated productions.
 
 At the present stage, the visible goal is to provide rendering of simple mathematical exercises in multiple languages.
 A demo is available (see \cite{MathBar})
 
-% subsection goals (end)
 
 % section introduction (end)
+
+
+
+
 
 \section{The library} % (fold)
 \label{sec:the_library}
 The library is a collection of GF modules
 
-\subsection{Categories} % (fold)
-\label{sub:categories}
 
 GF types are called \emph{categories}, they are used to declare signatures for the functions that generate the grammar.
 Ours are all possible combinations of \textbf{Variable} and \textbf{Value} with the mathematical categories: \textbf{Number}, \textbf{Set}, \textbf{Tensor} and \textbf{Function}.
@@ -60,10 +59,6 @@ The distinction between variables and values allows us to type-check productions
 Obviously variables can be promoted to values when needed.
 
 Other categories stand for propositions, geometric constructions and indices.
-% subsection categories (end)
-
-\subsection{Structure} % (fold)
-\label{sub:structure}
 
 The library is organised matrix-like with an horizontal axis ranging over the targeted natural languages.
 At the moment these are: Bulgarian, Catalan, English, Finnish, French, German, Italian, Romanian, Spanish and Swedish.
@@ -82,11 +77,6 @@ The intermediate layer is called \emph{OpenMath} because is modelled after \emph
 Each \emph{Content Dictionary} corresponds to a module in this layer.
 
 The top layer (\emph{Operations}) deals with simple mathematical exercises like compute, find, prove, give an example \ldots.
-
-% subsection structure (end)
-
-\subsection{Examples} % (fold)
-\label{sub:examples}
 
 An example from the \emph{OpenMath} layer:
 
@@ -119,9 +109,6 @@ the hyperbolic cosine of y is greater than pi.
 \end{quote}
 
 
-
-
-% subsection examples (end)
 
 % section the_library (end)
 
