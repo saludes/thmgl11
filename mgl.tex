@@ -1,5 +1,5 @@
 \documentclass[submission,copyright,creativecommons]{eptcs}
-\providecommand{\event}{SOS 2007} % Name of the event you are submitting to
+\providecommand{\event}{THedu'11}
 %\usepackage{breakurl}             % Not needed if you use pdflatex only.
 \usepackage{listings}
 \usepackage{color}
@@ -24,12 +24,6 @@ Sebastian Xamb\'o
 		breaklines=true,
 		tabsize=2} % language=GF
 \maketitle
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% Begin Notes SX
-%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcommand{\molto}{\textsc{mOlto}}
 \newcommand{\webalt}{\textsc{WebALT}}
 \newcommand{\openmath}{\textsc{OpenMath}}
@@ -43,8 +37,6 @@ Sebastian Xamb\'o
 \newcommand{\Nat}{\texttt{Nat}}
 \newcommand{\Prop}{\texttt{Prop}}
 
-%\newcommand{\exclude}[1]{#1}
-\newcommand{\exclude}[1]{}
 
 
 \begin{abstract}
@@ -58,25 +50,6 @@ We also comment on possible future applications
 in the area of artificial mathematics assistants.
 \end{abstract}
 
-
-
-%% This paragraph is meant to force citing of all items.
-%% Change the df of \exclude above to omit this part.
-\exclude{
-Bib so far:
-\cite{Caprotti_multilingualdelivery},
-\cite{Caprotti06webalt!deliver},
-\cite{Nganga06},
-\cite{Caprotti05},
-\cite{Strotmann05},
-\cite{Strotmann05!ISAAC},
-\cite{Carlson05},
-\cite{OpenMath},
-\cite{GF},
-\cite{Mathbar},
-\cite{E-LearningMathematics},
-\cite{AutonomousLearners}
-}
 
 
 
@@ -132,14 +105,14 @@ the same level of functionality as the others.
 The WebALT prototype was successful and, as far as we know, that endeavour
 brought about the first application of the GF system (\cite{GF,Ranta11})
 for the multilingual translation of simple mathematical questions.  The
-powerful \GF{} scheme, based on the perfect interlocking of abstract and
+powerful \GF\ scheme, based on the perfect interlocking of abstract and
 concrete grammars, was found to be a very sound choice, but the solution
 had several shortcommings that could not be addressed in that project.
 For the present purposes, the three that worried us the most are the
 following:
 \begin{itemize}
 \item
-The grammars did not work for later versions of \GF{} ($>$2.9).
+The grammars did not work for later versions of \GF\  ($>$2.9).
 \item
 The library was not modular with respect to
 semantic processing, and hence not easy to maintain.
@@ -158,7 +131,7 @@ To design a \emph{modular} mathematics library structured according to
 the semantic standards (content dictionaries) of \openmath{}
 (\cite{OpenMath}).
 \item
-To code it in the much more expressive \GF{}\,\,3.1 for the few languages
+To code it in the much more expressive \GF~3.1 for the few languages
 mentioned above, and
 \item
 To write new code for a few additional languages (Bulgarian, Finnish,
@@ -173,18 +146,18 @@ a controlled uniform extension of the available grammars.
 
 
 
-\section{Some basic \GF{} notions}
+\section{Some basic \GF\ notions}
 
-For convenience, we include a few notions about the \GF{}
+For convenience, we include a few notions about the \GF\ 
 system that will ease the considerations about MGL in the next section.
 For a thourough reference, see \cite{Ranta11}.
 
 Any GF application begins by specifying its \emph{abstract syntax}. This
-syntax contains declarations of \emph{categories} (the \GF{} name for
-types) and \emph{functions} (the \GF{} name for constructor signatures) and
+syntax contains declarations of \emph{categories} (the \GF\  name for
+types) and \emph{functions} (the \GF\ name for constructor signatures) and
 has to capture the \emph{semantic structure} of the application domain.
 For example, to let \Nat{} stand for the type of natural numbers and
-\Prop{} for propositions about natural numbers, the \GF{} syntax is
+\Prop{} for propositions about natural numbers, the \GF\ syntax is
 {\small
 \begin{verbatim}
      cat Nat, Prop ;
@@ -316,10 +289,10 @@ Bulgarian, Finnish,
 German, Romanian and Sweedish
 (Finnish was considered in the first step, but it had to be worked out from
 scratch).
-In this note we have described the \GF{} library produced so far for
+In this note we have described the \GF\ library produced so far for
 multilingual mathematical text processing, which we call
-\MGL{} (Mathematics Grammar Library). We have also indicated how it
-originated in the \webalt{} projecte, its relation to \GF{}, and its
+\MGL\ (Mathematics Grammar Library). We have also indicated how it
+originated in the \webalt\ project, its relation to \GF, and its
 present functionality.
 
 Further work has three main lines:
@@ -339,102 +312,12 @@ that is being researched from several angles. One important point is to
 ascertain when a piece of mathematical text requires functionalities
 (categories, constructors, operations) not covered yet.
 \item
-Advancing in the use of \MGL{} for the production of ever more
+Advancing in the use of \MGL\ for the production of ever more
 sophisticated artificial mathematics assistants. This is also the focus of
 current research that includes a collaboration with statistical machine
 translation methods, as in principle they can suggest grammatical structures
 out of a corpus of mathematical sentences.
 \end{itemize}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%
-%% Excluded text
-%%%%%%%%%%%%%%%%%%%%
-%\exclude{
-\subsubsection*{Acknowledgements}
-We are grateful for the generous help of many people and
-institutions: The \webalt{} and \molto{} projects
-
-WebALT
-
-MOLTO steering committee
-
-Katerina Bohmov\'a, Alba Hierro, Ramona Enache,
-
-Francesc Massan\'es, Thomas Hallgren, Inari Listenmaa, Krasimir Angelov
-
-Barcelona MT team: Cristina Espa\~na-Bonet, Llu\'{\i}s M\'arquez, Xavier
-Carreras
-%}
-
-
-%\exclude{
-\textbf{word problem}: a type of textbook problem
-designed to help students
-apply abstract mathematical concepts
-to `real-world' situations.
-Significant background information on the
-problem is presented as text rather than in
-mathematical notation.
-
-\begin{itemize}
-\item[]
-A farm raises two kinds of animals: ducks and rabbits. In
-total there are 60 animals and 140 legs. How many ducks
-and rabbits are there in the farm?
-\item[]
-John is David's father. He is three times as old as his
-son, but in 10 years, he will be twice as old. How old are
-they now?
-\end{itemize}
-%}
-
-%\exclude{
-Another motivating experience.
-In 1991 A. Deledicq started in France the \emph{Kangourou sans
-fronti\`eres}, a mathematical contest for secondary education students that
-P. O'Holloran had been running in Australia for thousands of students.  In
-the following years, it was introduced progressively, with similar names,
-in many other countries around the world.  The contest has four levels,
-according to age (13 to 16). Each level consists of thirty
-questions, the allowed time is 75 minutes and calculators are not allowed.
-At present it is taken by hundreds of thousands of students.
-
-For our research, one interesting aspect is that it is inheretly a
-multilingual undertaking.  The problems are proposed by all national
-mathematical societies that have adopted the contest and are chosen by a
-large international committee composed of delegates from those societies.
-Once chosen, the problems are translated by each society, so that in
-principle there exists a very large body of mathematical questions with
-human translations into more than forty languages.  Unfortunately, the
-national societies tend to adapt the questions to their curricula and this
-causes that in many instances we do not have a completely faithful
-translation.
-
-Here are two examples that hopefully convey a flavour of the kind of
-questions that are proposed.
-{\small
-\begin{itemize}
-\item[]
-(Proposed by Russia) What is the least number of digits you need to delete
-in the number 12323314 in order to find a palindrome?
-
-   A) 1 B) 2 C) 3 D) 4 E) 5
-
-\item[]
-(Proposed by Ukraine) We have three boxes: one is white, another is red and
-the last is black. One is empty, one has an apple, and another has a chocolate
-bar. Find what color is the box that has the chocolate bar if we know that
-the chocolate is in the white box or in red box and the apple is neither in
-the white box nor in the black box.
-
-A) White B) Red C) Black D) Red or Black E) It is impossible to know
-\end{itemize}
-}
-
-%} % end exclude
 
 
 \nocite{*}
