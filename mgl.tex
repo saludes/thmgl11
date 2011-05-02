@@ -3,7 +3,7 @@
 %\usepackage{breakurl}             % Not needed if you use pdflatex only.
 \usepackage{listings}
 \usepackage{color}
-\definecolor{light-gray}{gray}{0.8}
+\definecolor{light-gray}{gray}{0.95}
 
 \title{The GF Mathematics Library}
 \author{Jordi Saludes
@@ -22,6 +22,7 @@ Sebastian Xamb\'o
 \begin{document}
 \lstset{backgroundcolor=\color{light-gray},
 		breaklines=true,
+		basicstyle=\ttfamily,
 		tabsize=2} % language=GF
 \maketitle
 \newcommand{\molto}{\textsc{mOlto}}
@@ -241,27 +242,25 @@ in drilling materials and usually begin with directives such as
 
 The following tree is an example belonging to the \emph{OpenMath} layer:
 \begin{lstlisting}
-     mkProp
-     (lt_num
-       (abs (plus (BaseValNum (Var2Num x) (Var2Num y))))
-       (plus (BaseValNum (abs (Var2Num x)) (abs (Var2Num y)))))
+mkProp
+(lt_num
+  (abs (plus (BaseValNum (Var2Num x) (Var2Num y))))
+  (plus (BaseValNum (abs (Var2Num x)) (abs (Var2Num y)))))
 \end{lstlisting}
 When linearized with the Spanish concrete grammar, it yields
 \begin{quote}
 El valor absoluto de la suma  de x y de y es menor que la suma del valor
 absoluto  de x y del valor absoluto de y
 \end{quote}
-
-
 Similarly, the tree
 \begin{lstlisting}
-     DoSelectFromN
-       (Var2Num y)
-       (domain (inverse tanh))
-       (mkProp
-         (gt_num
-         (At cosh (Var2Num y))
-          pi))
+DoSelectFromN
+  (Var2Num y)
+  (domain (inverse tanh))
+  (mkProp
+    (gt_num
+    (At cosh (Var2Num y))
+     pi))
 \end{lstlisting}
 gives, when linearized with the English concrete grammar:
 \begin{quote}
