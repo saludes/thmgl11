@@ -30,7 +30,6 @@ Sebastian Xamb\'o
 \newcommand{\webalt}{\textsc{WebALT}}
 \newcommand{\openmath}{\textsc{OpenMath}}
 \newcommand{\CD}{\textsc{CD}}
-\newcommand{\OM}{\textsc{OM}}
 \newcommand{\MGL}{\textsc{MGL}}
 \newcommand{\MMA}{\textsc{MMA}}
 \newcommand{\CAS}{\textsc{CAS}}
@@ -156,7 +155,13 @@ For convenience, we include a few notions about the \GF\
 system that will ease the considerations about MGL in the next section.
 For a thourough reference, see \cite{Ranta11}.
 
-Any GF application begins by specifying its \emph{abstract syntax}. This
+\GF\ is a functional language for multilingual grammar applications where:
+\begin{itemize}
+	\item Productions are declared in \emph{abstract modules} whose types are derived from the Martin-L\"of type theory;
+	\item Definitions of these abstract productions are given in a \emph{concrete module} specific to each of the targeted languages.
+\end{itemize} 
+
+This way, any \GF\ application begins by specifying its abstract syntax. This
 syntax contains declarations of \emph{categories} (the \GF\  name for
 types) and \emph{functions} (the \GF\ name for constructor signatures) and
 has to capture the \emph{semantic structure} of the application domain.
@@ -190,7 +195,9 @@ fun
 \section{The library} % (fold)
 \label{sec:the_library}
 
-\MGL\ is a collection of GF modules. The categories used in these modules
+\MGL\ is a collection of GF modules which are being developed in the context
+of the \molto\ project \cite{molto}.
+The categories used in these modules
 are in correspondence with all possible combinations of \textbf{Variable}
 and \textbf{Value} with the mathematical types
 \textbf{Number}, \textbf{Set}, \textbf{Tensor} and \textbf{Function}.
@@ -214,15 +221,15 @@ The vertical axis is for complexity and contains, from bottom to top, three
 layers:
 
 \begin{enumerate}
-\item\emph{Ground}. It deals with literals, indices and variables.
-\item\emph{OpenMath}. It is modelled after the \OM{ } \emph{Content
+	\item\emph{Ground}. It deals with literals, indices and variables.
+	\item\emph{OpenMath}. It is modelled after the \openmath\ \emph{Content
 Dictionaries} (\CD's). Each \CD{} defines a collection of
 mathematical objects. This is a \emph{de facto} standard for mathematical
 semantics and for each \emph{Content Dictionary}
 there is a corresponding module in this layer.
 The \CD's are collected by the
 \emph{OpenMath consortium} \cite{OpenMath}.
-\item\emph{Operations}.
+	\item\emph{Operations}.
 This layer takes care of simple mathematical exercises. These appear
 in drilling materials and usually begin with directives such as
 `Compute', `Find', `Prove', `Give an example of', etc.
