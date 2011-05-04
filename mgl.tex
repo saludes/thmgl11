@@ -115,7 +115,7 @@ For the present purposes, the three that worried us the most are the
 following:
 \begin{itemize}
 \item
-Recent developement of the \GF\ system got our grammars out of sync.
+Recent developement of the \GF\ system made our grammars go out of sync.
 \item
 The library was monolithic, hampering its usability and maintenance.
 \item
@@ -131,7 +131,7 @@ of mathematical texts.  Thus the main tasks were:
 \item
 To design a \emph{modular} mathematics library structured according to
 the semantic standards (content dictionaries) of \openmath{}
-(see \cite{OpenMath} and below).
+(see \cite{OpenMath} and section \ref{sec:the_library} below).
 \item
 To code it in the much cleaner modern \GF\ release for the few languages
 mentioned above, and
@@ -210,7 +210,7 @@ Bulgarian,
 Catalan, English, Finnish, French, German, Italian, Romanian, Spanish and
 Swedish.
 
-The vertical axis is for complexity and contains from bottom to top, three
+The vertical axis is for complexity and contains, from bottom to top, three
 layers:
 
 \begin{enumerate}
@@ -225,7 +225,7 @@ The \CD's are collected by the
 \item\emph{Operations}.
 This layer takes care of simple mathematical exercises. These appear
 in drilling materials and usually begin with directives such as
-`Compute', `Find', `Prove', `Give an example of', \ldots
+`Compute', `Find', `Prove', `Give an example of', etc.
 \end{enumerate}
 
 The following tree is an example belonging to the \emph{OpenMath} layer:
@@ -240,7 +240,7 @@ When linearized with the Spanish concrete grammar, it yields
 El valor absoluto de la suma  de x y de y es menor que la suma del valor
 absoluto  de x y del valor absoluto de y
 \end{quote}
-Similarly, the tree
+\noindent Similarly, the tree
 \begin{lstlisting}
 DoSelectFromN
   (Var2Num y)
@@ -258,10 +258,8 @@ the hyperbolic cosine of y is greater than pi.
 
 % section the_library (end)
 
-%%%%%%%%%%
-% un exemple d'Operations?
-
-\section{Conclusions and further work}
+\section{Conclusions and further work} % (fold)
+\label{sec:conclusions}
 
 After a first step in which the main concern was tidying and modularizing
 the \webalt{} prototype for simple mathematics exercises for the languages
@@ -273,9 +271,7 @@ Italian and
 Spanish,
 we have extended it, in a second step, with the languages
 Bulgarian, Finnish,
-German, Romanian and Sweedish
-(Finnish was considered in the first step, but it had to be worked out from
-scratch).
+German, Romanian and Sweedish.
 In this note we have described the \GF\ library produced so far for
 multilingual mathematical text processing, which we call
 \MGL\ (Mathematics Grammar Library). We have also indicated how it
@@ -290,8 +286,8 @@ like Danish, Dutch, Norwegian, Polish, Portuguese, Russian, \ldots
 This is a continuation of the first two steps referred to above and
 our assessment is that it can be done reliably with the methods and
 procedures established so far. To some extent, the library modules for a
-new language can be generated automatically up to a point in which the
-remaining work corresponds to natives in that language.
+new language can be generated automatically up to a point
+from lexical items provided by natives in that language.
 \item
 Describing a controlled procedure for the uniform and reliable extension
 of the grammars according to new semantic needs. This is an important step
@@ -306,11 +302,11 @@ translation methods, as in principle they can suggest grammatical structures
 out of a corpus of mathematical sentences.
 \end{itemize}
 
+% section conclusions (end)
+
 
 \nocite{*}
 \bibliographystyle{eptcsstyle/eptcs}
 %\bibliographystyle{eptcs}
 \bibliography{webalt}
 \end{document}
-
-
