@@ -170,8 +170,7 @@ For example, to let \Nat{} stand for the type of natural numbers and
 \begin{lstlisting}
 cat Nat, Prop ;    
 \end{lstlisting}
-That `zero is a natural number' and that `the successor of
-any natural number is a natural number' can be expressed as follows:
+The Peano inductive construction of the naturals can be expressed as follows:
 \begin{lstlisting}
 fun
    Zero : Nat ;
@@ -182,13 +181,14 @@ The signatures for `even number' and `prime number' can be captured with
 fun
    Even, Prime : Nat -> Prop ;	
 \end{lstlisting}
+So we can now express, for example: `the successor of the successor of zero is prime'.
+
 Finally, we can abstract the logical `not', `and' and `or' as follows:
 \begin{lstlisting}
 fun
      Not : Prop -> Prop ;
      And, Or : Prop -> Prop -> Prop ;    
 \end{lstlisting}
-
 
 
 
