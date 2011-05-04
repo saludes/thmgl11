@@ -3,18 +3,18 @@
 %\usepackage{breakurl}             % Not needed if you use pdflatex only.
 \usepackage{listings}
 \usepackage{color}
-\definecolor{light-gray}{gray}{0.8}
+\definecolor{light-gray}{gray}{0.95}
 
 \title{The GF Mathematics Library}
 \author{Jordi Saludes
 \institute{Universitat Polit\`ecnica de Catalunya}
-\institute{Sistemes Avan\c cats de Control}
+\institute{Sistemes Avan\c cats de Control and MA2}
 %Edifici GAIA, Terrassa (Spain)
 \email{jordi.saludes@upc.edu}
 \and
 Sebastian Xamb\'o
 \institute{Universitat Polit\`ecnica de Catalunya}
-\institute{MA2, Edifici OMEGA, Barcelona (Spain)}
+\institute{MA2, Edifici Omega, Barcelona (Spain)}
 \email{\quad sebastia.xambo@upc.edu}
 }
 \def\titlerunning{GF Math Library}
@@ -22,7 +22,10 @@ Sebastian Xamb\'o
 \begin{document}
 \lstset{backgroundcolor=\color{light-gray},
 		breaklines=true,
-		tabsize=2} % language=GF
+		% stringstyle=\ttfamily,
+		basicstyle=\ttfamily,
+		% language=GF,
+		tabsize=2} 
 \maketitle
 \newcommand{\molto}{\textsc{mOlto}}
 \newcommand{\webalt}{\textsc{WebALT}}
@@ -66,7 +69,8 @@ is that it is a good basis on which to build useful \MMA's for learning and
 teaching (cf. \cite{E-LearningMathematics, AutonomousLearners} for some
 general clues on e-learning technologies).
 
-In fact, we regard \MGL\ as an enabling technology for \emph{multilingual}
+In fact, we regard \MGL\ as a technology for 
+providing multilinguality to
 dialog systems capable of helping students in learning how to solve word
 problems.  This assessment is based on the \MGL\ potential capabilities
 for dealing effectively with a mixture of text and mathematical
@@ -85,8 +89,8 @@ in multiple languages (see \cite{MathBar} for a demo).
 
 For a closer view of \MGL, let us look briefly at its origins.  The
 idea behind \MGL\ was born, to a good extend, on reflecting about one of
-the key results of the \webalt{} project (see
-\cite{Caprotti_multilingualdelivery, Caprotti06webalt!deliver}).  In
+the key results of the \webalt\ project (see
+\cite{Caprotti_multilingualdelivery, Caprotti06webalt!deliver, Nganga06}).  In
 summary, the unfolding of this reflection went as follows.
 
 One of the aims of \webalt{} was to produce a proof-of-concept
@@ -103,19 +107,18 @@ Of these, Finnish, with its great complexities, could not be raised to
 the same level of functionality as the others.
 
 The WebALT prototype was successful and, as far as we know, that endeavour
-brought about the first application of the GF system (\cite{GF,Ranta11})
+brought about the first large application of the GF system (\cite{GF,Ranta11})
 for the multilingual translation of simple mathematical questions.  The
-powerful \GF\ scheme, based on the perfect interlocking of abstract and
+powerful \GF\ scheme, based on the interlocking of abstract and
 concrete grammars, was found to be a very sound choice, but the solution
 had several shortcommings that could not be addressed in that project.
 For the present purposes, the three that worried us the most are the
 following:
 \begin{itemize}
 \item
-The grammars did not work for later versions of \GF\  ($>$2.9).
+Recent developement of the \GF\ system got our grammars out of sync.
 \item
-The library was not modular with respect to
-semantic processing, and hence not easy to maintain.
+The library was monolithic, hampering its usability and maintenance.
 \item
 It included too few languages, especially as seen from an Europan
 perspective.
@@ -129,13 +132,13 @@ of mathematical texts.  Thus the main tasks were:
 \item
 To design a \emph{modular} mathematics library structured according to
 the semantic standards (content dictionaries) of \openmath{}
-(\cite{OpenMath}).
+(see \cite{OpenMath} and below).
 \item
-To code it in the much more expressive \GF~3.1 for the few languages
+To code it in the much cleaner modern \GF\ release for the few languages
 mentioned above, and
 \item
 To write new code for a few additional languages (Bulgarian, Finnish,
-German, Romanian and Sweedish).
+German, Romanian and Swedish).
 \end{itemize}
 The first two points amount to a tidying of the original \webalt{}
 programming methods. The third point represents not merely an addition
@@ -144,6 +147,8 @@ procedures enforced in the preceding steps. This testing is important in
 order to secure the rules for the inclusion of further languages and for
 a controlled uniform extension of the available grammars.
 
+At the end, we seek to have a modular and efficient library able
+to deliver services for a multitude of natural languages to mathematical content providers.
 
 
 \section{Some basic \GF\ notions}
@@ -158,43 +163,28 @@ types) and \emph{functions} (the \GF\ name for constructor signatures) and
 has to capture the \emph{semantic structure} of the application domain.
 For example, to let \Nat{} stand for the type of natural numbers and
 \Prop{} for propositions about natural numbers, the \GF\ syntax is
-{\small
-\begin{verbatim}
-     cat Nat, Prop ;
-\end{verbatim}
-}
+\begin{lstlisting}
+cat Nat, Prop ;    
+\end{lstlisting}
 That `zero is a natural number' and that `the successor of
 any natural number is a natural number' can be expressed as follows:
-{\small
-\begin{verbatim}
-     fun
-        Zero : Nat ;
-        Succ : Nat -> Nat ;
-\end{verbatim}
-}
+\begin{lstlisting}
+fun
+   Zero : Nat ;
+   Succ : Nat -> Nat ;
+\end{lstlisting}
 The signatures for `even number' and `prime number' can be captured with
-{\small
-\begin{verbatim}
-     fun
-        Even, Prime : Nat -> Prop ;
-\end{verbatim}
-}
+\begin{lstlisting}
+fun
+   Even, Prime : Nat -> Prop ;	
+\end{lstlisting}
 Finally, we can abstract the logical `not', `and' and `or' as follows:
-{\small
-\begin{verbatim}
-     fun
-        Not : Prop -> Prop ;
-        And, Or : Prop -> Prop -> Prop ;
-\end{verbatim}
-}
-In practical terms, these declarations would form the \emph{body} of an
-\emph{abstract module} that would have the form
-{\small
-\begin{verbatim}
-     abstract Arith = {<body>}
-\end{verbatim}
-}
-where \texttt{Arith} is the name of the module.
+\begin{lstlisting}
+fun
+     Not : Prop -> Prop ;
+     And, Or : Prop -> Prop -> Prop ;    
+\end{lstlisting}
+
 
 
 
